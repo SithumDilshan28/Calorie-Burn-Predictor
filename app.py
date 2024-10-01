@@ -28,6 +28,38 @@ def style_text(prediction):
 def main():
     st.title("Calories Burnt Prediction App")
 
+    # Apply CSS styling
+    st.markdown("""
+        <style>
+        body {
+            background-color: #f0f2f6;
+            color: #333;
+        }
+        .stButton button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 10px 24px;
+            border-radius: 10px;
+        }
+        .stButton button:hover {
+            background-color: #45a049;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+    # Sidebar with additional options
+    with st.sidebar:
+        st.image("fitness_banner.png", use_column_width=True)  # You can replace this with your custom image
+        st.header("About")
+        st.write(
+            """
+            This app predicts the number of calories burnt based on your exercise details. 
+            Input your data to get an estimate of calories burnt during your workout session.
+            """
+        )
+        st.write("Developed by: HealthTracker")
+
     # Input features
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.slider("Age", 20, 80, 30)
@@ -36,7 +68,6 @@ def main():
     duration = st.slider("Exercise Duration (minutes)", 1.0, 60.0, 30.0)
     heart_rate = st.slider("Heart Rate", 60.0, 150.0, 90.0)
     body_temp = st.slider("Body Temperature (°C)", 35.0, 42.0, 37.0)
-    
 
     # Convert gender to numerical value
     gender_encoded = 0 if gender == "Male" else 1
