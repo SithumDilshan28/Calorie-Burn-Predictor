@@ -7,6 +7,11 @@ import pickle
 with open('Calories_Burnt.pkl', 'rb') as file:
     model = pickle.load(file)
 
+# Set page layout and title
+st.set_page_config(page_title="Calories Burnt Prediction", layout="wide", page_icon="🔥")
+st.title("🔥 Calories Burnt Prediction App")
+st.subheader("Estimate the number of calories burnt during your workout based on exercise details.")
+
 # Function to make predictions
 def predict_calories_burnt(data):
     prediction = model.predict(data)
@@ -21,13 +26,11 @@ def style_text(prediction):
     else:
         label_color = "red"
 
-    styled_text = f'<span style="color: {label_color}; font-size: 20px;">Predicted Calories Burnt: {prediction}</span>'
+    styled_text = f'<span style="color: {label_color}; font-size: 20px;">Predicted Calories Burnt: {prediction[0]:.2f}</span>'
     return styled_text
 
 # Streamlit UI
 def main():
-    st.title("Calories Burnt Prediction App")
-
     # Apply CSS styling
     st.markdown("""
         <style>
@@ -58,9 +61,10 @@ def main():
             Input your data to get an estimate of calories burnt during your workout session.
             """
         )
-        st.write("Developed by: HealthTracker")
+        st.write("Developed by: U-Connect")
 
     # Input features
+    st.subheader("Input Exercise Details")
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.slider("Age", 20, 80, 30)
     height = st.slider("Height (cm)", 120.0, 230.0, 170.0)
