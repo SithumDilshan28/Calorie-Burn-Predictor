@@ -29,9 +29,7 @@ def style_text(prediction):
     styled_text = f'<span style="color: {label_color}; font-size: 20px;">Predicted Calories Burnt: {prediction[0]:.2f}</span>'
     return styled_text
 
-# Add footer with social media links
-st.markdown("---")
-st.markdown("💬 Connect with us: [LinkedIn](https://www.linkedin.com/) | [Twitter](https://twitter.com/) | [GitHub](https://github.com/)")
+
 
 
 # Streamlit UI
@@ -104,3 +102,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Add footer with social media links
+st.markdown("---")
+st.markdown("💬 Connect with us: [LinkedIn](https://www.linkedin.com/) | [Twitter](https://twitter.com/) | [GitHub](https://github.com/)")
